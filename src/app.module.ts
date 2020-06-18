@@ -11,6 +11,7 @@ import { ContactController } from './companies/controllers/contact.controller';
 import { CompanyController } from './companies/controllers/company.controller';
 import { IngredientController } from './dishes/controllers/ingredient.controller';
 import { DishController } from './dishes/controllers/dish.controller';
+import { BranchController } from './companies/controllers/branch.controller';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ export class AppModule implements NestModule {
       .apply()
       .exclude()
       .forRoutes(
+        BranchController,
         CompanyController,
         ContactController,
         DishController,
