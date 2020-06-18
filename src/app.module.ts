@@ -9,6 +9,8 @@ import * as winstonConfig from './configs/winston.config';
 import { WinstonModule } from 'nest-winston';
 import { ContactController } from './companies/controllers/contact.controller';
 import { CompanyController } from './companies/controllers/company.controller';
+import { IngredientController } from './dishes/controllers/ingredient.controller';
+import { DishController } from './dishes/controllers/dish.controller';
 
 @Module({
   imports: [
@@ -27,6 +29,11 @@ export class AppModule implements NestModule {
     consumer
       .apply()
       .exclude()
-      .forRoutes(CompanyController, ContactController);
+      .forRoutes(
+        CompanyController,
+        ContactController,
+        DishController,
+        IngredientController,
+      );
   }
 }

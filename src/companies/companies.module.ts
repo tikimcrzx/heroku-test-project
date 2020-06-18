@@ -10,7 +10,7 @@ import { CompanyController } from './controllers/company.controller';
 @Module({
   imports: [
     MongooseModule.forFeature([
-      { name: 'Brnch', schema: BranchSchema, collection: 'branches' },
+      { name: 'Branch', schema: BranchSchema, collection: 'branches' },
       { name: 'Company', schema: CompanySchema, collection: 'companies' },
       { name: 'Contact', schema: ContactSchema, collection: 'contacts' },
     ]),
