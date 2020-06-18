@@ -51,7 +51,7 @@ export class ContactController {
     res.status(HttpStatus.CREATED).json(createdContact);
   }
 
-  @Delete()
+  @Delete(':id')
   async delete(@Param('id') id: string, @Res() res: Response) {
     const deletdContact = await this._contactService.delete(id);
     res.status(HttpStatus.OK).json(deletdContact);
