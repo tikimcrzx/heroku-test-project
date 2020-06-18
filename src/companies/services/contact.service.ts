@@ -31,12 +31,9 @@ export class ContactService {
   }
 
   async delete(id: string): Promise<boolean> {
-    const contact: Contact = await this._contactModel.findById(id);
+    const contact: Contact = await this._contactModel.findByIdAndDelete(id);
 
     if (!contact) throw new NotFoundException(`Contact ${id} not found`);
-
-    contact.remove();
-    contact.save();
 
     return true;
   }
