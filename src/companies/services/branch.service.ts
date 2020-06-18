@@ -35,21 +35,39 @@ export class BranchService {
   }
 
   async findById(id: string): Promise<Branch> {
-    const branch: Branch = await this._branchModel.findById(id).populate({
-      path: 'menu',
-      model: 'Dish',
-      populate: { path: 'ingredients', model: 'Ingredient', select: 'name' },
-    });
+    const branch: Branch = await this._branchModel
+      .findById(id)
+      .populate({
+        path: 'menu',
+        model: 'Dish',
+        populate: { path: 'ingredients', model: 'Ingredient', select: 'name' },
+      })
+      .populate({ path: 'contact', model: 'Contact', select: 'name phone' })
+      .populate({
+        path: 'company',
+        model: 'Company',
+        select: 'name contact',
+        populate: { path: 'contact', model: 'Contact', select: 'name phone' },
+      });
     if (!branch) throw new NotFoundException(`Branch ${id} not found`);
     return branch;
   }
 
   async findAll(): Promise<Branch[]> {
-    const branches: Branch[] = await this._branchModel.find().populate({
-      path: 'menu',
-      model: 'Dish',
-      populate: { path: 'ingredients', model: 'Ingredient', select: 'name' },
-    });
+    const branches: Branch[] = await this._branchModel
+      .find()
+      .populate({
+        path: 'menu',
+        model: 'Dish',
+        populate: { path: 'ingredients', model: 'Ingredient', select: 'name' },
+      })
+      .populate({ path: 'contact', model: 'Contact', select: 'name phone' })
+      .populate({
+        path: 'company',
+        model: 'Company',
+        select: 'name contact',
+        populate: { path: 'contact', model: 'Contact', select: 'name phone' },
+      });
     return branches;
   }
 }
