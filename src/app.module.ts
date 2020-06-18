@@ -8,6 +8,7 @@ import * as mongoConfig from './configs/mongo.config';
 import * as winstonConfig from './configs/winston.config';
 import { WinstonModule } from 'nest-winston';
 import { ContactController } from './companies/controllers/contact.controller';
+import { CompanyController } from './companies/controllers/company.controller';
 
 @Module({
   imports: [
@@ -26,6 +27,6 @@ export class AppModule implements NestModule {
     consumer
       .apply()
       .exclude()
-      .forRoutes(ContactController);
+      .forRoutes(CompanyController, ContactController);
   }
 }

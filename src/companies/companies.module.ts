@@ -4,6 +4,8 @@ import { BranchSchema, CompanySchema, ContactSchema } from './schemas';
 
 import { ContactService } from './services/contact.service';
 import { ContactController } from './controllers/contact.controller';
+import { CompanyService } from './services/company.service';
+import { CompanyController } from './controllers/company.controller';
 
 @Module({
   imports: [
@@ -13,8 +15,8 @@ import { ContactController } from './controllers/contact.controller';
       { name: 'Contact', schema: ContactSchema, collection: 'contacts' },
     ]),
   ],
-  providers: [ContactService],
-  controllers: [ContactController],
+  providers: [CompanyService, ContactService],
+  controllers: [CompanyController, ContactController],
   exports: [MongooseModule],
 })
 export class CompaniesModule {}

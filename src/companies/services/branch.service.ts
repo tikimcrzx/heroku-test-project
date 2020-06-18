@@ -6,6 +6,6 @@ import { Branch } from '../models';
 @Injectable()
 export class BranchService {
   constructor(
-    @InjectModel('Branch') private readonly branchModel: Model<Branch>,
+    @InjectModel('Branch') private readonly _branchModel: Model<Branch>,
   ) {}
 }
