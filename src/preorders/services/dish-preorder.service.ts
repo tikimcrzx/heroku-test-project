@@ -1,21 +1,22 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
-import { DishPreOrder } from '../models/dish-preorder.model';
-import { CreateDishPreOrderDTO } from '../input-dto';
+import { Injectable, NotFoundException } from "@nestjs/common";
+import { InjectModel } from "@nestjs/mongoose";
+import { Model } from "mongoose";
+import { DishPreOrder } from "../models/dish-preorder.model";
+import { CreateDishPreOrderDTO } from "../input-dto";
 
 @Injectable()
 export class DishPreOrderService {
   constructor(
-    @InjectModel('DishPreOrder')
-    private readonly _dishPreOrder: Model<DishPreOrder>,
+    @InjectModel("DishPreOrder") private readonly _dishPreOrder: Model<
+      DishPreOrder
+    >,
   ) {}
 
   async create(
     createDishPreOrder: CreateDishPreOrderDTO,
   ): Promise<DishPreOrder> {
     const duplicated: DishPreOrder = await this._dishPreOrder.findOne(
-      createDishPreOrder.dish,
+      { dish: createDishPreOrder.dish },
     );
 
     let dishPreOrder: DishPreOrder;
