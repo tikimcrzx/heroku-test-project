@@ -12,6 +12,7 @@ import { CompanyController } from './companies/controllers/company.controller';
 import { IngredientController } from './dishes/controllers/ingredient.controller';
 import { DishController } from './dishes/controllers/dish.controller';
 import { BranchController } from './companies/controllers/branch.controller';
+import { DishPreOrderController } from './preorders/controllers/dish-preorder.controller';
 
 @Module({
   imports: [
@@ -35,6 +36,7 @@ export class AppModule implements NestModule {
         CompanyController,
         ContactController,
         DishController,
+        DishPreOrderController,
         IngredientController,
       );
   }

@@ -23,6 +23,9 @@ export class BranchController {
     res.status(HttpStatus.OK).json(branches);
   }
 
+  // @Post(':menu')
+  // async menu() {}
+
   @Get(':id')
   async findById(@Param('id') id: string, @Res() res: Response) {
     const branch = await this._branchService.findById(id);

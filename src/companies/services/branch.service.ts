@@ -3,6 +3,8 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Branch } from '../models';
 import { CreateBranchDTO, UpdateBranchDTO } from '../input-dto';
+import { responseCard } from '../utils/response-facebook.card';
+import { Dish } from 'src/dishes/models';
 
 @Injectable()
 export class BranchService {
@@ -69,5 +71,23 @@ export class BranchService {
         populate: { path: 'contact', model: 'Contact', select: 'name phone' },
       });
     return branches;
+  }
+
+  async menu(name: string): Promise<any> {
+    const dishes: Dish[] = await (await this._branchModel.findOne({ name }))
+      .menu;
+    const menu = [];
+
+    for (let index = 0; index < dishes.length; index++) {
+      menu.push(
+        responseCard(
+          dishes[index].name,
+          dishes[index].name,
+          dishes[index].image,
+          'ordenar',
+        ),
+      );
+    }
+    return { fulfillmentMessages: menu };
   }
 }
