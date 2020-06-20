@@ -4,7 +4,6 @@ import { Model } from 'mongoose';
 import { Branch } from '../models';
 import { CreateBranchDTO, UpdateBranchDTO } from '../input-dto';
 import { responseCard } from '../utils/response-facebook.card';
-import { Dish } from 'src/dishes/models';
 
 @Injectable()
 export class BranchService {
@@ -74,20 +73,26 @@ export class BranchService {
   }
 
   async menu(name: string): Promise<any> {
-    const dishes: Dish[] = await (await this._branchModel.findOne({ name }))
-      .menu;
+    const dishes = await await this._branchModel.findOne({ name }).populate({
+      path: 'menu',
+      model: 'Dish',
+      populate: { path: 'ingredients', model: 'Ingredient', select: 'name' },
+    });
     const menu = [];
 
-    for (let index = 0; index < dishes.length; index++) {
+    for (let index = 0; index < dishes.menu.length; index++) {
       menu.push(
         responseCard(
-          dishes[index].name,
-          dishes[index].name,
-          dishes[index].image,
+          dishes.menu[index].name,
+          dishes.menu[index].name,
+          dishes.menu[index].image,
           'ordenar',
         ),
       );
     }
+    console.log(dishes);
+    console.log(menu);
+
     return { fulfillmentMessages: menu };
   }
 }
