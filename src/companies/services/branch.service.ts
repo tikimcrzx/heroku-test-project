@@ -90,8 +90,6 @@ export class BranchService {
         ),
       );
     }
-    console.log(dishes);
-    console.log(menu);
 
     return { fulfillmentMessages: menu };
   }

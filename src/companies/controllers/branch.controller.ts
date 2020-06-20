@@ -27,6 +27,12 @@ export class BranchController {
     res.status(HttpStatus.OK).json(branches);
   }
 
+  @Post('order')
+  async orden(@Res() res: Response) {
+    const menu = await this._branchService.menu('suchilitos');
+    res.status(HttpStatus.OK).json(menu);
+  }
+
   @Post('menu')
   async menu(
     @Body() intentParameterDto: IntentParameterDTO,
