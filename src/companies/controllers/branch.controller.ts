@@ -12,6 +12,10 @@ import {
 import { BranchService } from '../services/branch.service';
 import { Response } from 'express';
 import { UpdateBranchDTO, CreateBranchDTO } from '../input-dto';
+import {
+  IntentParameterDTO,
+  ParameterRestaurantDTO,
+} from '../../main/input-dto';
 
 @Controller('branch')
 export class BranchController {
@@ -23,8 +27,16 @@ export class BranchController {
     res.status(HttpStatus.OK).json(branches);
   }
 
-  // @Post(':menu')
-  // async menu() {}
+  @Post('menu')
+  async menu(
+    @Body() intentParameterDto: IntentParameterDTO,
+    @Res() res: Response,
+  ) {
+    const param = intentParameterDto.queryResult
+      .parameters as ParameterRestaurantDTO;
+    const menu = await this._branchService.menu(param.Restaurant);
+    res.status(HttpStatus.OK).json(menu);
+  }
 
   @Get(':id')
   async findById(@Param('id') id: string, @Res() res: Response) {
