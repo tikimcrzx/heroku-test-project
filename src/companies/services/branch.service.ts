@@ -4,6 +4,7 @@ import { Model } from 'mongoose';
 import { Branch } from '../models';
 import { CreateBranchDTO, UpdateBranchDTO } from '../input-dto';
 import { responseCard } from '../utils/response-facebook.card';
+import { responseSuggestion } from '../utils/suggestion-facebook';
 
 @Injectable()
 export class BranchService {
@@ -70,6 +71,10 @@ export class BranchService {
         populate: { path: 'contact', model: 'Contact', select: 'name phone' },
       });
     return branches;
+  }
+
+  order() {
+    return responseSuggestion();
   }
 
   async menu(name: string): Promise<any> {

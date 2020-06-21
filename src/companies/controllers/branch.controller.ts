@@ -29,8 +29,9 @@ export class BranchController {
 
   @Post('order')
   async orden(@Res() res: Response) {
-    const menu = await this._branchService.menu('suchilitos');
-    res.status(HttpStatus.OK).json(menu);
+    // const menu = await this._branchService.menu('suchilitos');
+    const response = this._branchService.order();
+    res.status(HttpStatus.OK).json(response);
   }
 
   @Post('menu')
