@@ -1,4 +1,12 @@
 export function suggestionOrder() {
+  return {
+    payload: {
+      platform: 'facebook',
+      type: 2,
+      replies: ['Order', 'Solorno', 'Samantano'],
+    },
+  };
+
   return [
     {
       card: {
@@ -12,7 +20,7 @@ export function suggestionOrder() {
           },
         ],
       },
-      platfrom: 'FACEBOOK',
+      platform: 'FACEBOOK',
       sendAsMessage: true,
     },
     {
