@@ -1,5 +1,12 @@
 export function suggestionOrder() {
   return {
-    suggestions: [{ title: 'seguir ordenando' }, { title: 'terminar' }],
+    template_type: 'button',
+    text: 'Pepidos',
+    buttons: [
+      {
+        text: 'Ordenar',
+        postback: '',
+      },
+    ],
   };
 }
