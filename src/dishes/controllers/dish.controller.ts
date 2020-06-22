@@ -12,6 +12,8 @@ import {
 import { DishService } from '../services/dish.service';
 import { Response } from 'express';
 import { UpdateDishDTO, CreateDishDTO } from '../input-dto';
+import { IntentParameterDTO, ParameterOrderDTO } from '../../main/input-dto';
+import { DishPreOrderService } from '../../preorders/services/dish-preorder.service';
 
 @Controller('dish')
 export class DishController {
@@ -21,6 +23,18 @@ export class DishController {
   async findAll(@Res() res: Response) {
     const dishes = await this._dishService.findAll();
     res.status(HttpStatus.OK).json(dishes);
+  }
+
+  @Post('order')
+  async order(
+    @Body() intentParameterDto: IntentParameterDTO,
+    @Res() res: Response,
+  ) {
+    const param = intentParameterDto.queryResult
+      .parameters as ParameterOrderDTO;
+    const dish = await this._dishService.findOne(param.Order);
+    // console.log(dish._id);
+    res.status(HttpStatus.OK).json(dish);
   }
 
   @Get(':id')

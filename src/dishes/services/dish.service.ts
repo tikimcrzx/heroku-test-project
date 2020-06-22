@@ -3,6 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Dish } from '../models';
 import { CreateDishDTO, UpdateDishDTO } from '../input-dto';
+import { suggestionOrder } from '../utils/suggestion-card';
 
 @Injectable()
 export class DishService {
@@ -39,6 +40,14 @@ export class DishService {
       .find()
       .populate({ path: 'ingredients', model: 'Ingredient', select: 'name' });
     return dishes;
+  }
+
+  async findOne(name: string): Promise<any> {
+    const dish: Dish = await this._dishModel
+      .findOne({ name })
+      .populate({ path: 'ingredients', model: 'Ingredient', select: 'name' });
+    console.log(dish);
+    return suggestionOrder();
   }
 
   async findById(id: string): Promise<Dish> {
