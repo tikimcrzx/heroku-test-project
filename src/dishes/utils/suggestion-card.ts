@@ -1,10 +1,19 @@
 export function suggestionOrder() {
   return {
-    payload: {
-      platform: 'facebook',
-      type: 2,
-      replies: ['Order', 'Solorno', 'Samantano'],
-    },
+    messages: [
+      {
+        platform: 'google',
+        suggestions: [
+          {
+            title: 'Chip One',
+          },
+          {
+            title: 'Chip Two',
+          },
+        ],
+        type: 'suggestion_chips',
+      },
+    ],
   };
 
   return [
