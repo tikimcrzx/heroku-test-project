@@ -14,14 +14,12 @@ import { Response } from 'express';
 import { UpdateDishDTO, CreateDishDTO } from '../input-dto';
 import { IntentParameterDTO, ParameterOrderDTO } from '../../main/input-dto';
 import { DishPreOrderService } from '../../preorders/services/dish-preorder.service';
-import { DishPreOrder } from '../../preorders/models/dish-preorder.model';
-import { CreateDishPreOrderDTO } from 'src/preorders/input-dto';
-import { Dish } from '../models';
+import { CreateDishPreOrderDTO } from '../../preorders/input-dto';
 
 @Controller('dish')
 export class DishController {
   constructor(private readonly _dishService: DishService) {}
-  private _dishPre: DishPreOrderService;
+  private readonly _dishPre: DishPreOrderService;
 
   @Get()
   async findAll(@Res() res: Response) {
