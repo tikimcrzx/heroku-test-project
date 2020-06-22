@@ -47,7 +47,7 @@ export class DishService {
       .findOne({ name })
       .populate({ path: 'ingredients', model: 'Ingredient', select: 'name' });
     console.log(dish);
-    return suggestionOrder();
+    return { fulfillmentMessages: suggestionOrder() };
   }
 
   async findById(id: string): Promise<Dish> {
