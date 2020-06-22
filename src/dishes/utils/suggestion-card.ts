@@ -1,5 +1,5 @@
 export function suggestionOrder() {
-  const order = [
+  return [
     {
       card: {
         title: 'Ordenar',
