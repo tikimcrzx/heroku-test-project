@@ -37,7 +37,7 @@ export class DishController {
     const dish: any = await this._dishService.findOne(param.Order);
     const dishes: CreateDishPreOrderDTO = {
       quantity: null,
-      dish: dish._id,
+      dish: '5eec2663864e710046c01f5b',
       status: false,
     };
 
