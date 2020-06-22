@@ -1,20 +1,22 @@
 export function suggestionOrder() {
-  return {
-    messages: [
-      {
-        platform: 'google',
-        suggestions: [
-          {
-            title: 'Chip One',
-          },
-          {
-            title: 'Chip Two',
-          },
-        ],
-        type: 'suggestion_chips',
-      },
-    ],
-  };
+  return [
+    {
+      messages: [
+        {
+          platform: 'google',
+          suggestions: [
+            {
+              title: 'Chip One',
+            },
+            {
+              title: 'Chip Two',
+            },
+          ],
+          type: 'suggestion_chips',
+        },
+      ],
+    },
+  ];
 
   return [
     {
