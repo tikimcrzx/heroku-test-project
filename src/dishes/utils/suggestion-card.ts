@@ -2,8 +2,9 @@ export function suggestionOrder() {
   return [
     {
       quickReplies: {
-        title: 'Selecione opción',
-        quickReplies: ['Si', 'No', 'Tal vez'],
+        title: 'Seguir Ordenando',
+        quickReplies: ['Si', 'No'],
+        platform: 'FACEBOOK',
       },
     },
   ];
