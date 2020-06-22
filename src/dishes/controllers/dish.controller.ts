@@ -14,10 +14,14 @@ import { Response } from 'express';
 import { UpdateDishDTO, CreateDishDTO } from '../input-dto';
 import { IntentParameterDTO, ParameterOrderDTO } from '../../main/input-dto';
 import { DishPreOrderService } from '../../preorders/services/dish-preorder.service';
+import { DishPreOrder } from '../../preorders/models/dish-preorder.model';
+import { CreateDishPreOrderDTO } from 'src/preorders/input-dto';
+import { Dish } from '../models';
 
 @Controller('dish')
 export class DishController {
   constructor(private readonly _dishService: DishService) {}
+  private _dishPre: DishPreOrderService;
 
   @Get()
   async findAll(@Res() res: Response) {
@@ -32,8 +36,15 @@ export class DishController {
   ) {
     const param = intentParameterDto.queryResult
       .parameters as ParameterOrderDTO;
-    const dish = await this._dishService.findOne(param.Order);
-    // console.log(dish._id);
+    const dish: any = await this._dishService.findOne(param.Order);
+    const dishes: CreateDishPreOrderDTO = {
+      quantity: null,
+      dish: dish._id,
+      status: false,
+    };
+
+    await this._dishPre.create(dishes);
+    console.log(dish._id);
     res.status(HttpStatus.OK).json(dish);
   }
 

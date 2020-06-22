@@ -3,6 +3,6 @@ import { Dish } from '../../dishes/models';
 
 export interface DishPreOrder extends Document {
   quantity: number;
-  dish: Dish;
+  dish: string;
   status: boolean;
 }
