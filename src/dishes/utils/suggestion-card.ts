@@ -1,6 +1,15 @@
 export function suggestionOrder() {
   return [
     {
+      quickReplies: {
+        title: 'Selecione opción',
+        quickReplies: ['Si', 'No', 'Tal vez'],
+      },
+    },
+  ];
+
+  return [
+    {
       messages: [
         {
           platform: 'google',
@@ -17,6 +26,8 @@ export function suggestionOrder() {
       ],
     },
   ];
+
+  //https://www.youtube.com/watch?v=ueVX-p05378
 
   return [
     {
