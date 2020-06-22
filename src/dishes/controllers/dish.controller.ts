@@ -14,7 +14,6 @@ import { Response } from 'express';
 import { UpdateDishDTO, CreateDishDTO } from '../input-dto';
 import { IntentParameterDTO, ParameterOrderDTO } from '../../main/input-dto';
 import { DishPreOrderService } from '../../preorders/services/dish-preorder.service';
-import { CreateDishPreOrderDTO } from '../../preorders/input-dto';
 
 @Controller('dish')
 export class DishController {
@@ -35,14 +34,6 @@ export class DishController {
     const param = intentParameterDto.queryResult
       .parameters as ParameterOrderDTO;
     const dish: any = await this._dishService.findOne(param.Order);
-    const dishes: CreateDishPreOrderDTO = {
-      quantity: null,
-      dish: '5eec2663864e710046c01f5b',
-      status: false,
-    };
-
-    await this._dishPre.create(dishes);
-    console.log(dish._id);
     res.status(HttpStatus.OK).json(dish);
   }
 
