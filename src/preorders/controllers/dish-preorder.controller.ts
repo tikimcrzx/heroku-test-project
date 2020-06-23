@@ -28,6 +28,12 @@ export class DishPreOrderController {
     res.status(HttpStatus.OK).json(createdDishPreOrder);
   }
 
+  @Post('finish')
+  async finish(@Res() res: Response) {
+    const param = await this._dishPreOrderService.finish();
+    res.status(HttpStatus.OK).json(param);
+  }
+
   @Post('order')
   async order(
     @Body() intentParameterDTO: IntentParameterDTO,
