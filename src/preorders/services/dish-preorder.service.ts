@@ -20,6 +20,7 @@ export class DishPreOrderService {
     for (let index = 0; index < dishes.length; index++) {
       if (dishes[index].dish.name === name) {
         _id = dishes[index]._id;
+        quantity = dishes[index].quantity;
       }
     }
 
