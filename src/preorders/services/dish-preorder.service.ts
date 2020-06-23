@@ -18,10 +18,7 @@ export class DishPreOrderService {
     let quantity = 0;
     for (let index = 0; index < dishes.length; index++) {
       const element = dishes[index];
-      if (element.dish.name === name) {
-        _id = element._id;
-        quantity = element.quantity;
-      }
+      console.log(element.dish);
     }
     quantity++;
     console.log(_id);
