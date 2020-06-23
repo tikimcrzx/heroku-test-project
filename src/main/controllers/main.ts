@@ -18,6 +18,8 @@ export class MainController {
       url = URLs.MENU;
     } else if (displayName === Intents.RESTAURANT_ORDER) {
       url = URLs.ORDER;
+    } else if (displayName === Intents.REPIT_ORDER) {
+      // url = R
     }
 
     res.redirect(HttpStatus.TEMPORARY_REDIRECT, url);

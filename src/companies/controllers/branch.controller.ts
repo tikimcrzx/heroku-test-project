@@ -27,10 +27,9 @@ export class BranchController {
     res.status(HttpStatus.OK).json(branches);
   }
 
-  @Post('order')
+  @Post('maxorder')
   async orden(@Res() res: Response) {
     const menu = await this._branchService.menu('suchilitos');
-    // const response = this._branchService.order();
     res.status(HttpStatus.OK).json(menu);
   }
 
