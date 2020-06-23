@@ -19,10 +19,11 @@ export class DishPreOrderService {
     let _id = '00-8089e-e-e-e';
 
     for (let index = 0; index < dishes.length; index++) {
-      if (dishes[index].dish.name === name) {
-        dish = dishes[index].dish.name;
-        _id = dishes[index]._id;
-      }
+      // if (dishes[index].dish.name === name) {
+      //   dish = dishes[index].dish.name;
+      //   _id = dishes[index]._id;
+      // }
+      console.log(dishes[index].dish);
     }
     // await this._dishPreOrder.updateOne({ dish }, { quantity });
     // await this._dishPreOrder.findByIdAndUpdate(_id, { quantity });
