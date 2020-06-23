@@ -17,18 +17,20 @@ export class DishPreOrderService {
     const dishesPreOrders = await this._dishPreOrder.find();
     let dish;
     let _id = '00-8089e-e-e-e';
+    const arr = [];
 
     for (let index = 0; index < dishes.length; index++) {
       // if (dishes[index].dish.name === name) {
       //   dish = dishes[index].dish.name;
       //   _id = dishes[index]._id;
       // }
+      arr.push(dishes[index].dish);
       console.log(dishes[index].dish);
     }
     // await this._dishPreOrder.updateOne({ dish }, { quantity });
     // await this._dishPreOrder.findByIdAndUpdate(_id, { quantity });
     return {
-      fulfillmentMessages: `${name} -- ${dish} -- ${_id}`,
+      fulfillmentMessages: `${name} -- ${dish} -- ${_id} -- ${arr}`,
     };
   }
 
