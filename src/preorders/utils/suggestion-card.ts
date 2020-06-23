@@ -9,5 +9,3 @@ export function suggestionOrder() {
     },
   ];
 }
-
-//https://developers.facebook.com/docs/messenger-platform/send-messages/template/button

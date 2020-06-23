@@ -3,6 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { DishPreOrder } from '../models/dish-preorder.model';
 import { CreateDishPreOrderDTO } from '../input-dto';
+import { suggestionOrder } from '../utils/suggestion-card';
 
 @Injectable()
 export class DishPreOrderService {
@@ -10,6 +11,23 @@ export class DishPreOrderService {
     @InjectModel('DishPreOrder')
     private readonly _dishPreOrder: Model<DishPreOrder>,
   ) {}
+
+  async order(name: string): Promise<any> {
+    const dishes: any = await this.findAll();
+    let _id = '';
+    let quantity = 0;
+    for (let index = 0; index < dishes.length; index++) {
+      const element = dishes[index];
+      if (element.dish.name === name) {
+        _id = element._id;
+        quantity = element.quantity;
+      }
+    }
+    quantity++;
+    console.log(_id);
+    await this._dishPreOrder.findByIdAndUpdate(_id, { quantity });
+    return { fulfillmentMessages: suggestionOrder() };
+  }
 
   async create(
     createDishPreOrder: CreateDishPreOrderDTO,

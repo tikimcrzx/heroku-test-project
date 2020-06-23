@@ -1,4 +1,9 @@
-export function responseCard(title, subtitle, imageUri, button) {
+export function responseCard(
+  title: string,
+  subtitle: string,
+  imageUri: string,
+  button: string,
+) {
   return {
     card: {
       title,
