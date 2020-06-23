@@ -101,7 +101,7 @@ export class DishPreOrderService {
     const total = `Su Orden ${text} \n total=$${price}`;
 
     return {
-      fulfillmentMessages: { platform: 'FACEBOOK', text: { text: [text] } },
+      fulfillmentMessages: [{ text: { text: [total] } }],
     };
   }
 }
