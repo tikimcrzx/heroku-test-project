@@ -19,7 +19,7 @@ export class DishPreOrderService {
 
     for (let index = 0; index < dishes.length; index++) {
       if (dishes[index].dish.name === name) {
-        dish = dishes[index].dish.name;
+        dish = dishes[index].dish;
         quantity = dishes[index].quantity;
       }
     }
