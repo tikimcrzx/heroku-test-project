@@ -85,6 +85,7 @@ export class DishPreOrderService {
     return dishPreOrders;
   }
 
+  // https://www.canva.com/es_mx/aprende/10-hacks-usados-en-diseno-de-menus-para-que-ordenes-mas/
   async finish(): Promise<any> {
     const dishPreOrders: any = await this.findAll();
     let text = '';
@@ -100,7 +101,7 @@ export class DishPreOrderService {
     const total = `Su Orden ${text} \n total=$${price}`;
 
     return {
-      fulfillmentMessages: total,
+      fulfillmentMessages: { platform: 'FACEBOOK', text: { text: [text] } },
     };
   }
 }
