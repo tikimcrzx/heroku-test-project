@@ -13,19 +13,21 @@ export class DishPreOrderService {
   ) {}
 
   async order(name: string): Promise<any> {
-    const dishes: DishPreOrder[] = await this.findAll();
+    const dishes: any = await this.findAll();
+    const dishesPreOrders = await this._dishPreOrder.find();
     let dish;
-    let quantity = 0;
+    let _id = '00-8089e-e-e-e';
 
     for (let index = 0; index < dishes.length; index++) {
-      quantity = dishes[index].quantity;
-      dish = dishes[index].dish;
-      console.log(dishes[index]._id);
+      if (dishes[index].dish.name === name) {
+        dish = dishes[index].dish.name;
+        _id = dishes[index]._id;
+      }
     }
     // await this._dishPreOrder.updateOne({ dish }, { quantity });
     // await this._dishPreOrder.findByIdAndUpdate(_id, { quantity });
     return {
-      fulfillmentMessages: 'suggestionOrder()' + quantity + '----' + dish,
+      fulfillmentMessages: `${name} -- ${dish}`,
     };
   }
 
