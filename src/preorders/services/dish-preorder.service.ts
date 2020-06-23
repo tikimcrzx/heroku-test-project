@@ -27,7 +27,7 @@ export class DishPreOrderService {
     // await this._dishPreOrder.updateOne({ dish }, { quantity });
     // await this._dishPreOrder.findByIdAndUpdate(_id, { quantity });
     return {
-      fulfillmentMessages: `${name} -- ${dish}`,
+      fulfillmentMessages: `${name} -- ${dish} -- ${_id}`,
     };
   }
 
