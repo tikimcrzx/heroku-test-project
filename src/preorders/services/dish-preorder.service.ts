@@ -19,13 +19,13 @@ export class DishPreOrderService {
 
     for (let index = 0; index < dishes.length; index++) {
       if (dishes[index].dish.name === name) {
-        console.log(dishes[index]._id);
+        _id = dishes[index]._id;
       }
     }
 
     quantity++;
-    // console.log(_id);
-    // await this._dishPreOrder.findByIdAndUpdate(_id, { quantity });
+    console.log(_id);
+    await this._dishPreOrder.findByIdAndUpdate(_id, { quantity });
     return { fulfillmentMessages: suggestionOrder() };
   }
 
