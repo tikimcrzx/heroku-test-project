@@ -38,8 +38,8 @@ export class DishPreOrderController {
 
     console.log(param.Order);
 
-    // const order = await this._dishPreOrderService.order(param.Order);
-    res.status(HttpStatus.OK).json('OK');
+    const order = await this._dishPreOrderService.order(param.Order);
+    res.status(HttpStatus.OK).json(order);
   }
 
   @Put(':id')
