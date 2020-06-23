@@ -29,7 +29,9 @@ export class DishPreOrderService {
     console.log(quantity);
     // await this._dishPreOrder.updateOne({ dish }, { quantity });
     // await this._dishPreOrder.findByIdAndUpdate(_id, { quantity });
-    return { fulfillmentMessages: suggestionOrder() };
+    return {
+      fulfillmentMessages: 'suggestionOrder()' + quantity + '----' + dish,
+    };
   }
 
   async create(
