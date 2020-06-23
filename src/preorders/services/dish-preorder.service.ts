@@ -93,8 +93,8 @@ export class DishPreOrderService {
     for (let index = 0; index < dishPreOrders.length; index++) {
       text += `${dishPreOrders[index].quantity} ${
         dishPreOrders[index].dish.name
-      }  ${dishPreOrders[index].dish.name} total ${dishPreOrders[index].dish
-        .details[2].price * dishPreOrders[index].quantity} \n`;
+      } total ${dishPreOrders[index].dish.details[2].price *
+        dishPreOrders[index].quantity} \n`;
 
       price +=
         dishPreOrders[index].dish.details[2].price *
