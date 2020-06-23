@@ -93,14 +93,14 @@ export class DishPreOrderService {
     for (let index = 0; index < dishPreOrders.length; index++) {
       text += `${dishPreOrders[index].quantity} ${
         dishPreOrders[index].dish.name
-      } = ${dishPreOrders[index].dish.details[2].price *
+      } = $${dishPreOrders[index].dish.details[2].price *
         dishPreOrders[index].quantity} \n`;
 
       price +=
         dishPreOrders[index].dish.details[2].price *
         dishPreOrders[index].quantity;
     }
-    const total = `Resumen son ${text} \n total=$${price}`;
+    const total = `Resumen son ${text} \n total = $${price}`;
 
     return {
       fulfillmentMessages: [{ text: { text: [total] } }],
