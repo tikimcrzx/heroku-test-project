@@ -19,7 +19,7 @@ export class MainController {
     } else if (displayName === Intents.RESTAURANT_ORDER) {
       url = URLs.ORDER;
     } else if (displayName === Intents.REPIT_ORDER) {
-      // url = R
+      url = URLs.MAXORDER;
     }
 
     res.redirect(HttpStatus.TEMPORARY_REDIRECT, url);
