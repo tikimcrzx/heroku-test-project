@@ -13,20 +13,15 @@ export class DishPreOrderService {
   ) {}
 
   async order(name: string): Promise<any> {
-    const dishes: any = await this.findAll();
+    const dishes: DishPreOrder[] = await this.findAll();
     let dish = '';
     let quantity = 0;
 
     for (let index = 0; index < dishes.length; index++) {
-      if (dishes[index].dish.name === name) {
-        dish = dishes[index].dish;
-        quantity = dishes[index].quantity;
-      }
+      quantity = dishes[index].quantity;
+      console.log(dishes[index]._id);
+      console.log(dishes[index].dish);
     }
-
-    quantity++;
-    console.log(dish);
-    console.log(quantity);
     // await this._dishPreOrder.updateOne({ dish }, { quantity });
     // await this._dishPreOrder.findByIdAndUpdate(_id, { quantity });
     return {
