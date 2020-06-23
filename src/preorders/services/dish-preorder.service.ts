@@ -25,7 +25,8 @@ export class DishPreOrderService {
     }
     quantity++;
     console.log(_id);
-    await this._dishPreOrder.findByIdAndUpdate(_id, { quantity });
+    console.log(name);
+    // await this._dishPreOrder.findByIdAndUpdate(_id, { quantity });
     return { fulfillmentMessages: suggestionOrder() };
   }
 
