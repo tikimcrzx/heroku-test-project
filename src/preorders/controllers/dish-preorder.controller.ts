@@ -36,8 +36,10 @@ export class DishPreOrderController {
     const param = intentParameterDTO.queryResult
       .parameters as ParameterOrderDTO;
 
-    const order = await this._dishPreOrderService.order(param.Order);
-    res.status(HttpStatus.OK).json(order);
+    console.log(param.Order);
+
+    // const order = await this._dishPreOrderService.order(param.Order);
+    res.status(HttpStatus.OK).json('OK');
   }
 
   @Put(':id')
