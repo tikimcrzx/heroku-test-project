@@ -24,8 +24,7 @@ export class DishPreOrderService {
       //   dish = dishes[index].dish.name;
       //   _id = dishes[index]._id;
       // }
-      arr.push(dishes[index].dish);
-      console.log(dishes[index].dish);
+      arr.push(dishes[index].dish.name);
     }
     // await this._dishPreOrder.updateOne({ dish }, { quantity });
     // await this._dishPreOrder.findByIdAndUpdate(_id, { quantity });
