@@ -24,6 +24,8 @@ export class MainController {
       url = URLs.FINISH;
     }
 
+    // v1
+
     res.redirect(HttpStatus.TEMPORARY_REDIRECT, url);
   }
 }

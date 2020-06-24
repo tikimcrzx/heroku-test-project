@@ -65,6 +65,11 @@ export class DishPreOrderController {
     res.status(HttpStatus.OK).json(param);
   }
 
+  @Post('resumen')
+  async resumen(@Res() res: Response) {
+    res.status(HttpStatus.OK).json('Ok');
+  }
+
   @Post('order')
   async order(
     @Body() intentParameterDTO: IntentParameterDTO,
