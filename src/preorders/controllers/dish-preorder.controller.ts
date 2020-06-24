@@ -29,7 +29,9 @@ export class DishPreOrderController {
       dish: facebook,
       status: false,
     };
+
     const exist = await this._dishPreOrderService.findDish(facebook);
+
     if (!exist) {
       insert.quantity = 1;
       insert.status = false;
@@ -40,8 +42,10 @@ export class DishPreOrderController {
       insert.dish = facebook;
     }
 
+    const suggestion = this._dishPreOrderService.order();
+
     await this._dishPreOrderService.create(insert);
-    res.status(HttpStatus.OK).json(this._dishPreOrderService.order());
+    res.status(HttpStatus.OK).json(suggestion);
   }
 
   @Post()
