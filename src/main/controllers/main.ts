@@ -20,11 +20,10 @@ export class MainController {
       url = URLs.ORDER;
     } else if (displayName === Intents.REPIT_ORDER) {
       url = URLs.MAXORDER;
-    } else if (displayName === Intents.FINISH_ORDER) {
-      url = URLs.FINISH;
     }
-
-    // v1
+    // else if (displayName === Intents.FINISH_ORDER) {
+    //   url = URLs.FINISH;
+    // }
 
     res.redirect(HttpStatus.TEMPORARY_REDIRECT, url);
   }
