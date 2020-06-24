@@ -43,7 +43,13 @@ export class DishPreOrderController {
     await this._dishPreOrderService.create(insert);
     res
       .status(HttpStatus.OK)
-      .json(suggestionOrder('Seguir Ordenando', 'Ordenar', 'Terminar'));
+      .json({
+        fulfillmentMessages: suggestionOrder(
+          'Seguir Ordenando',
+          'Ordenar',
+          'Terminar',
+        ),
+      });
   }
 
   @Post()
