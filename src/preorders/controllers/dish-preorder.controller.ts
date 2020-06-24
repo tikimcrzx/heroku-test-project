@@ -41,15 +41,7 @@ export class DishPreOrderController {
     }
 
     await this._dishPreOrderService.create(insert);
-    res
-      .status(HttpStatus.OK)
-      .json({
-        fulfillmentMessages: suggestionOrder(
-          'Seguir Ordenando',
-          'Ordenar',
-          'Terminar',
-        ),
-      });
+    res.status(HttpStatus.OK).json(this._dishPreOrderService.order());
   }
 
   @Post()
@@ -77,7 +69,7 @@ export class DishPreOrderController {
     const param = intentParameterDTO.queryResult
       .parameters as ParameterOrderDTO;
 
-    const order = await this._dishPreOrderService.order(param.Order);
+    const order = await this._dishPreOrderService.order();
     res.status(HttpStatus.OK).json(order);
   }
 

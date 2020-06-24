@@ -12,19 +12,19 @@ export class DishPreOrderService {
     private readonly _dishPreOrder: Model<DishPreOrder>,
   ) {}
 
-  async order(name: string): Promise<any> {
-    const dishes: any = await this.findAll();
-    let _id: string;
-    let quantity: number;
+  async order(): Promise<any> {
+    // const dishes: any = await this.findAll();
+    // let _id: string;
+    // let quantity: number;
 
-    for (let index = 0; index < dishes.length; index++) {
-      if (dishes[index].dish.name == name) {
-        _id = dishes[index]._id;
-        quantity = dishes[index].quantity;
-      }
-    }
-    quantity++;
-    await this._dishPreOrder.findByIdAndUpdate(_id, { quantity });
+    // for (let index = 0; index < dishes.length; index++) {
+    //   if (dishes[index].dish.name == name) {
+    //     _id = dishes[index]._id;
+    //     quantity = dishes[index].quantity;
+    //   }
+    // }
+    // quantity++;
+    // await this._dishPreOrder.findByIdAndUpdate(_id, { quantity });
     return {
       fulfillmentMessages: suggestionOrder(
         'Seguir Ordenando',
