@@ -26,11 +26,7 @@ export class DishPreOrderService {
     // quantity++;
     // await this._dishPreOrder.findByIdAndUpdate(_id, { quantity });
     return {
-      fulfillmentMessages: suggestionOrder(
-        'Seguir Ordenando',
-        'Ordenar',
-        'Terminar',
-      ),
+      fulfillmentMessages: suggestionOrder(),
     };
   }
 

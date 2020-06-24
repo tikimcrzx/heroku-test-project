@@ -1,9 +1,9 @@
-export function suggestionOrder(title, ...texts) {
+export function suggestionOrder() {
   return [
     {
       quickReplies: {
-        title: title,
-        quickReplies: [texts],
+        title: 'Seguir Ordenando',
+        quickReplies: ['Ordenar', 'Terminar'],
         platform: 'FACEBOOK',
       },
     },

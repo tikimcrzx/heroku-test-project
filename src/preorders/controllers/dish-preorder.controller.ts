@@ -42,7 +42,7 @@ export class DishPreOrderController {
       insert.dish = facebook;
     }
 
-    const suggestion = await this._dishPreOrderService.order();
+    const suggestion = { fulfillmentMessages: suggestionOrder() };
 
     await this._dishPreOrderService.create(insert);
     res.status(HttpStatus.OK).json(suggestion);
