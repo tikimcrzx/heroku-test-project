@@ -12,10 +12,39 @@ import { DishPreOrderService } from '../services/dish-preorder.service';
 import { CreateDishPreOrderDTO } from '../input-dto';
 import { Response } from 'express';
 import { IntentParameterDTO, ParameterOrderDTO } from '../../main/input-dto';
+import { suggestionOrder } from '../utils/suggestion-card';
 
 @Controller('dishpreorder')
 export class DishPreOrderController {
   constructor(private readonly _dishPreOrderService: DishPreOrderService) {}
+
+  @Post(':facebook')
+  async facebook(
+    @Param('facebook') facebook: string,
+    @Body() intentParameterDto: IntentParameterDTO,
+    @Res() res: Response,
+  ) {
+    let insert: { quantity: number; dish: string; status: boolean } = {
+      quantity: 1,
+      dish: facebook,
+      status: false,
+    };
+    const exist = await this._dishPreOrderService.findDish(facebook);
+    if (!exist) {
+      insert.quantity = 1;
+      insert.status = false;
+      insert.dish = facebook;
+    } else {
+      insert.quantity = exist.quantity;
+      insert.status = false;
+      insert.dish = facebook;
+    }
+
+    await this._dishPreOrderService.create(insert);
+    res
+      .status(HttpStatus.OK)
+      .json(suggestionOrder('Seguir Ordenando', 'Ordenar', 'Terminar'));
+  }
 
   @Post()
   async create(

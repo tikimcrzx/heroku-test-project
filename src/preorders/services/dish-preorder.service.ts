@@ -26,7 +26,11 @@ export class DishPreOrderService {
     quantity++;
     await this._dishPreOrder.findByIdAndUpdate(_id, { quantity });
     return {
-      fulfillmentMessages: suggestionOrder(),
+      fulfillmentMessages: suggestionOrder(
+        'Seguir Ordenando',
+        'Ordenar',
+        'Terminar',
+      ),
     };
   }
 
@@ -69,6 +73,14 @@ export class DishPreOrderService {
         populate: { path: 'ingredients', model: 'Ingredient', select: 'name' },
       });
     if (!dishPreOrder) throw new NotFoundException(`Pre Order ${id} not found`);
+    return dishPreOrder;
+  }
+
+  async findDish(dish: string): Promise<DishPreOrder> {
+    const dishPreOrder: DishPreOrder = await this._dishPreOrder.findOne({
+      dish,
+    });
+    if (!dishPreOrder) return null;
     return dishPreOrder;
   }
 

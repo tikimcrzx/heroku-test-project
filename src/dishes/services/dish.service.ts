@@ -42,12 +42,13 @@ export class DishService {
     return dishes;
   }
 
-  async findOne(name: string): Promise<any> {
+  async findOne(name: string): Promise<Dish> {
     const dish: Dish = await this._dishModel
       .findOne({ name })
       .populate({ path: 'ingredients', model: 'Ingredient', select: 'name' });
-    console.log(dish);
-    return { fulfillmentMessages: suggestionOrder() };
+
+    return dish;
+    // return { fulfillmentMessages: suggestionOrder() };
   }
 
   async findById(id: string): Promise<Dish> {

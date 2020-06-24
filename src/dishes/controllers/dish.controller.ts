@@ -14,6 +14,8 @@ import { Response } from 'express';
 import { UpdateDishDTO, CreateDishDTO } from '../input-dto';
 import { IntentParameterDTO, ParameterOrderDTO } from '../../main/input-dto';
 import { DishPreOrderService } from '../../preorders/services/dish-preorder.service';
+import { URLs } from '../enums/url.enum';
+import { Dish } from '../models';
 
 @Controller('dish')
 export class DishController {
@@ -33,8 +35,15 @@ export class DishController {
   ) {
     const param = intentParameterDto.queryResult
       .parameters as ParameterOrderDTO;
-    const dish: any = await this._dishService.findOne(param.Order);
-    res.status(HttpStatus.OK).json(dish);
+    const dish: Dish = await this._dishService.findOne(param.Order);
+
+    if (dish) {
+      res.redirect(
+        HttpStatus.TEMPORARY_REDIRECT,
+        `${URLs.PREORDER}/${dish._id}`,
+      );
+    }
+    res.status(HttpStatus.OK).json('dish ' + param.Order);
   }
 
   @Get(':id')
